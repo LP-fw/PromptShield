@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nome": "Prompt Injection",
+    "codice_owasp": "LLM01:2025",
+    "categoria": "Input Manipulation",
+    "severita": "Critica",
+    "anno_scoperta": 2023,
+    "modello_colpito": "GPT-4",
+    "tecnica": "Direct / Indirect Injection",
+    "mitigazione": "Input sanitization, context isolation",
+    "descrizione": "L'attaccante manipola il prompt per far eseguire al modello istruzioni non autorizzate, aggirando le linee guida di sicurezza."
+  },
+  {
+    "id": 2,
+    "nome": "Sensitive Information Disclosure",
+    "codice_owasp": "LLM02:2025",
+    "categoria": "Privacy Attack",
+    "severita": "Alta",
+    "anno_scoperta": 2023,
+    "modello_colpito": "GPT-4",
+    "tecnica": "Query Probing",
+    "mitigazione": "Data minimization, output filtering",
+    "descrizione": "Il modello rivela involontariamente dati sensibili presenti nel training set o nel contesto della conversazione."
+  },
+  {
+    "id": 3,
+    "nome": "Supply Chain",
+    "codice_owasp": "LLM03:2025",
+    "categoria": "Infrastructure Attack",
+    "severita": "Critica",
+    "anno_scoperta": 2024,
+    "modello_colpito": "LLaMA 3",
+    "tecnica": "Malicious Model Weights",
+    "mitigazione": "Model provenance verification, SBOM",
+    "descrizione": "Componenti di terze parti compromessi introducono vulnerabilità nella pipeline."
+  },
+  {
+    "id": 4,
+    "nome": "Data and Model Poisoning",
+    "codice_owasp": "LLM04:2025",
+    "categoria": "Training Attack",
+    "severita": "Critica",
+    "anno_scoperta": 2022,
+    "modello_colpito": "LLaMA 2",
+    "tecnica": "Backdoor Injection",
+    "mitigazione": "Dataset validation, adversarial training",
+    "descrizione": "Dati malevoli vengono inseriti nel training set per alterare il comportamento del modello."
+  },
+  {
+    "id": 5,
+    "nome": "Improper Output Handling",
+    "codice_owasp": "LLM05:2025",
+    "categoria": "Output Exploitation",
+    "severita": "Alta",
+    "anno_scoperta": 2023,
+    "modello_colpito": "GPT-4",
+    "tecnica": "XSS via LLM output",
+    "mitigazione": "Output sanitization, content validation",
+    "descrizione": "L'output del modello viene usato senza validazione causando vulnerabilità XSS, SQL injection o esecuzione di codice arbitrario."
+  },
+  {
+    "id": 6,
+    "nome": "Excessive Agency",
+    "codice_owasp": "LLM06:2025",
+    "categoria": "Agentic Attack",
+    "severita": "Critica",
+    "anno_scoperta": 2024,
+    "modello_colpito": "GPT-4",
+    "tecnica": "Tool Abuse",
+    "mitigazione": "Principle of least privilege, human oversight",
+    "descrizione": "Un agente LLM con troppi permessi esegue azioni non autorizzate su sistemi esterni senza supervisione umana."
+  },
+  {
+    "id": 7,
+    "nome": "System Prompt Leakage",
+    "codice_owasp": "LLM07:2025",
+    "categoria": "Privacy Attack",
+    "severita": "Media",
+    "anno_scoperta": 2024,
+    "modello_colpito": "Claude 3",
+    "tecnica": "Instruction Extraction",
+    "mitigazione": "Prompt confidentiality, secrets management",
+    "descrizione": "L'attaccante riesce a far rivelare al modello il system prompt riservato, esponendo logiche interne e credenziali."
+  },
+  {
+    "id": 8,
+    "nome": "Vector and Embedding Weaknesses",
+    "codice_owasp": "LLM08:2025",
+    "categoria": "Infrastructure Attack",
+    "severita": "Alta",
+    "anno_scoperta": 2024,
+    "modello_colpito": "RAG Systems",
+    "tecnica": "Embedding Poisoning",
+    "mitigazione": "Vector DB access control, embedding validation",
+    "descrizione": "Vulnerabilità nei database vettoriali e negli embedding compromettono i sistemi RAG permettendo retrieval di contenuti malevoli."
+  },
+  {
+    "id": 9,
+    "nome": "Misinformation",
+    "codice_owasp": "LLM09:2025",
+    "categoria": "Human Factor",
+    "severita": "Media",
+    "anno_scoperta": 2023,
+    "modello_colpito": "ChatGPT",
+    "tecnica": "Hallucination Exploitation",
+    "mitigazione": "Human oversight, RAG grounding",
+    "descrizione": "Il modello genera informazioni false o fuorvianti presentate con sicurezza, portando a decisioni errate o danni reputazionali."
+  },
+  {
+    "id": 10,
+    "nome": "Unbounded Consumption",
+    "codice_owasp": "LLM10:2025",
+    "categoria": "Availability Attack",
+    "severita": "Media",
+    "anno_scoperta": 2023,
+    "modello_colpito": "GPT-3.5",
+    "tecnica": "Resource Exhaustion",
+    "mitigazione": "Rate limiting, timeout, cost monitoring",
+    "descrizione": "Query complesse o ripetute saturano le risorse computazionali causando denial of service o costi operativi eccessivi."
+  }
+]
