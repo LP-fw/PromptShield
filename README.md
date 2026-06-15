@@ -19,7 +19,7 @@ Approfondimento della libreria **Chart.js** (libreria JavaScript open source per
 - **Gestione Dati**: CRUD completo con persistenza tramite localStorage
 
 ## Temporaneamente online su Pages
-https://lp-fw.github.io/ai-security-chartjs/
+https://lp-fw.github.io/PromptShield/
 
 ---
 
