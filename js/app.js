@@ -1,136 +1,474 @@
 const { createApp } = Vue
 
-createApp({
+// home
+const Intro = {
+    template: `
+        <div class="vista-intro">
+            <div class="row align-items-center mb-5">
+                <div class="col-12 col-lg-5 mb-4 mb-lg-0">
+                    <span class="badge-categoria">Libreria JavaScript Open Source</span>
+                    <h1>Cos'è Chart.js?</h1>
+                    <p class="hero-subtitle">
+                        Chart.js è una libreria JavaScript per la creazione di grafici 
+                        interattivi nel browser. 
+                    </p>
+                    <p>
+                        Nata nel 2013, ottima per la visualizzazione dati sul web perchè semplice da 
+                        usare, potente e completamente personalizzabile.
+                    </p>
+                    <p class="hero-subtitle">
+                        Chi conosce matplotlib in Python troverà la stessa logica: 
+                        si dichiara il tipo di grafico, si passano i dati e si 
+                        configurano le opzioni. 
+                        La differenza è che il risultato 
+                        è interattivo e animato nel browser.
+                    </p>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="content-card">
+                        <img src="img/chartjs.png" 
+                             alt="Logo di Chart.js con esempi grafici sullo sfondo"
+                             class="img-fluid"
+                             style="border-radius: 6px;">
+                        <p class="mt-2" style="font-size:0.8rem;">
+                            Sito ufficiale: <a href="https://www.chartjs.org" 
+                                target="_blank" 
+                                rel="noopener"
+                                aria-label="Visita il sito ufficiale di Chart.js, si apre in una nuova scheda">
+                                Visita il sito ufficiale di Chart.js
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-md-6">
+                    <div class="content-card h-100">
+                        <h2>Come funziona?</h2>
+                        <p>
+                            Chart.js utilizza l'elemento <code>&lt;canvas&gt;</code> di HTML5 
+                            per disegnare i grafici. Canvas è una superficie di rendering su 
+                            cui JavaScript disegna direttamente forme, linee e testo senza 
+                            creare elementi HTML nel DOM.
+                        </p>
+                        <p>
+                            Questo approccio garantisce prestazioni elevate anche con dataset 
+                            complessi, fino a 1 milione di punti con il decimation plugin attivo.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="content-card h-100">
+                        <h2>Come si include?</h2>
+                        <p>
+                            Non richiede installazioni complesse. Un singolo script via CDN 
+                            è sufficiente per avere accesso a tutti gli 8 tipi di grafici:
+                        </p>
+                        <pre class="code-block mt-3"><code>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+
+new Chart(canvas, {
+    type: 'bar',
+    data: { labels: [...], datasets: [...] },
+    options: { responsive: true }
+})</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card mb-4">
+                <h2>Caratteristiche principali</h2>
+                <div class="row g-3 mt-1">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="feature-item-v2">
+                            <span class="feature-label">Open source</span>
+                            <p>Progetto mantenuto dalla community, contribuzioni aperte a tutti.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="feature-item-v2">
+                            <span class="feature-label">8 tipi di grafici</span>
+                            <p>Bar, line, pie, doughnut, radar, scatter, bubble e polar area (tutti animati).</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="feature-item-v2">
+                            <span class="feature-label">Responsive</span>
+                            <p>I grafici si ridisegnano al resize della finestra mantenendo le proporzioni.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="feature-item-v2">
+                            <span class="feature-label">HTML5 Canvas</span>
+                            <p>Rendering ad alte prestazioni su tutti i browser moderni.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card mb-4">
+                <h2>Novità in Chart.js 4.0</h2>
+                <div class="row g-3 mt-1">
+                    <div class="col-12 col-md-4">
+                        <div class="news-item">
+                            <span class="news-tag">Colors plugin</span>
+                            <p>Palette di colori predefinita disponibile come plugin integrato.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="news-item">
+                            <span class="news-tag">Tree-shaking</span>
+                            <p>La dimensione del bundle può essere ridotta registrando solo i componenti necessari.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="news-item">
+                            <span class="news-tag">TypeScript</span>
+                            <p>Supporto nativo a TypeScript con definizioni di tipo complete e aggiornate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>Storia di Chart.js</h2>
+                <div class="timeline-horizontal">
+                    <div class="timeline-h-item">
+                        <span class="timeline-h-year">2013</span>
+                        <div class="timeline-h-dot"></div>
+                        <p>Nick Downie pubblica Chart.js su GitHub.</p>
+                    </div>
+                    <div class="timeline-h-item">
+                        <span class="timeline-h-year">2016</span>
+                        <div class="timeline-h-dot"></div>
+                        <p>Versione 2.0 con sistema a plugin.</p>
+                    </div>
+                    <div class="timeline-h-item">
+                        <span class="timeline-h-year">2020</span>
+                        <div class="timeline-h-dot"></div>
+                        <p>Versione 3.0, riscrittura completa.</p>
+                    </div>
+                    <div class="timeline-h-item">
+                        <span class="timeline-h-year">2022</span>
+                        <div class="timeline-h-dot"></div>
+                        <p>Versione 4.0, descritta nel box sopra.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+// approfndimento
+const Approfondimento = {
+    template: `
+        <div class="vista-approfondimento">
+            <div class="hero-section">
+                <span class="badge-categoria">Approfondimento tecnico</span>
+                <h1>Chart.js in dettaglio</h1>
+                <p class="hero-subtitle">
+                    Dalla configurazione avanzata all'integrazione con Vue.js, con esempi di casi d'uso reali e confronto con le alternative. Tutto quello che serve per usare Chart.js in un progetto reale!
+                </p>
+            </div>
+
+            <div class="content-card mb-4">
+                <h2>Chart.js vs le alternative</h2>
+                <p>Le tre librerie più usate per la visualizzazione dati sul web hanno caratteristiche molto diverse:</p>
+                <div class="table-responsive mt-3">
+                    <table class="table-confronto">
+                        <caption class="visually-hidden">Confronto tra Chart.js, D3.js e Plotly.js</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Caratteristica</th>
+                                <th scope="col" class="col-highlight">Chart.js</th>
+                                <th scope="col">D3.js</th>
+                                <th scope="col">Plotly.js</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Curva di apprendimento</td>
+                                <td class="col-highlight">Bassa</td>
+                                <td>Alta</td>
+                                <td>Media</td>
+                            </tr>
+                            <tr>
+                                <td>Rendering</td>
+                                <td class="col-highlight">Canvas</td>
+                                <td>SVG</td>
+                                <td>SVG / WebGL</td>
+                            </tr>
+                            <tr>
+                                <td>Tipi di grafici</td>
+                                <td class="col-highlight">8 predefiniti</td>
+                                <td>Illimitati</td>
+                                <td>40+</td>
+                            </tr>
+                            <tr>
+                                <td>Personalizzazione</td>
+                                <td class="col-highlight">Alta</td>
+                                <td>Totale</td>
+                                <td>Alta</td>
+                            </tr>
+                            <tr>
+                                <td>Peso (minified)</td>
+                                <td class="col-highlight">~60KB</td>
+                                <td>~90KB</td>
+                                <td>~3MB</td>
+                            </tr>
+                            <tr>
+                                <td>Interattività</td>
+                                <td class="col-highlight">Integrata</td>
+                                <td>Manuale</td>
+                                <td>Integrata</td>
+                            </tr>
+                            <tr>
+                                <td>Adatto ai principianti</td>
+                                <td class="col-highlight">Si</td>
+                                <td>No</td>
+                                <td>Si</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card mb-4">
+                <h2>Integrazione con Vue.js</h2>
+                <p>
+                    Chart.js si integra nativamente con Vue.js tramite il lifecycle hook 
+                    <code>mounted()</code> e il metodo <code>$nextTick()</code>. 
+                    Il canvas deve essere presente nel DOM prima di inizializzare il grafico.
+                </p>
+                <pre class="code-block mt-3"><code>createApp({
+    mounted() {
+        this.$nextTick(() => {
+            const ctx = document.getElementById('mioGrafico')
+            new Chart(ctx, {
+                type: 'bar',
+                data: { ... },
+                options: { responsive: true }
+            })
+        })
+    }
+}).mount('#app')</code></pre>
+                <p class="mt-3">
+                    Il metodo <code>$nextTick()</code> garantisce che Vue abbia completato 
+                    il rendering del DOM prima di cercare il canvas. Senza di esso, 
+                    il grafico non trova l'elemento e non viene creato.
+                </p>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-md-4">
+                    <div class="content-card h-100">
+                        <h2>Scale</h2>
+                        <p>
+                            Gli assi X e Y sono completamente configurabili (scala lineare, logaritmica, temporale o categorica). 
+                            Ogni asse supporta titoli, griglie e tick personalizzati.
+                        </p>
+                        <pre class="code-block mt-3"><code>scales: {
+  y: {
+    type: 'logarithmic',
+    title: {
+      display: true,
+      text: 'Valore'
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="content-card h-100">
+                        <h2>Plugin</h2>
+                        <p>
+                            Il sistema di plugin permette di estendere Chart.js 
+                            con funzionalità personalizzate quali annotazioni, zoom, 
+                            etichette dati e molto altro.
+                        </p>
+                        <pre class="code-block mt-3"><code>plugins: {
+  legend: {
+    position: 'bottom'
+  },
+  tooltip: {
+    callbacks: {
+      label: (ctx) =>
+        ctx.parsed.y + ' unità'
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="content-card h-100">
+                        <h2>Animazioni</h2>
+                        <p>
+                            Ogni proprietà di ogni elemento può essere animata 
+                            individualmente. Le transizioni si attivano al 
+                            caricamento e all'aggiornamento dei dati.
+                        </p>
+                        <pre class="code-block mt-3"><code>animation: {
+  duration: 1000,
+  easing: 'easeOutQuart',
+  onComplete: () => {
+    console.log('Fatto!')
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>Casi d'uso reali</h2>
+                <div class="row g-3 mt-1">
+                    <div class="col-12 col-md-6">
+                        <div class="news-item">
+                            <span class="news-tag">Data Science</span>
+                            <p>
+                                Visualizzazione di risultati: curve ROC, 
+                                confusion matrix rappresentate come heatmap, 
+                                distribuzioni di feature con istogrammi.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="news-item">
+                            <span class="news-tag">Dashboard aziendali</span>
+                            <p>
+                                KPI in tempo reale, andamento vendite, 
+                                metriche di performance.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="news-item">
+                            <span class="news-tag">Dashboard in Cybersecurity</span>
+                            <p>
+                                Visualizzazione di vulnerabilità, trend di attacchi 
+                                nel tempo, distribuzione per severità
+                                esattamente come in questa applicazione.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="news-item">
+                            <span class="news-tag">Ricerca accademica</span>
+                            <p>
+                                Grafici per paper e tesi, visualizzazione di 
+                                dataset sperimentali, confronto tra algoritmi 
+                                con grafici a barre e scatter plot.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+// dashboard
+const Dashboard = {
     data() {
         return {
-            vistaAttiva: 'intro',
             vulnerabilita: [],
-            grafici: {},
-
-            // CRUD
-            mostraForm: false,
-            formModifica: false,
-            form: {
-                id: null,
-                nome: '',
-                codice_owasp: '',
-                categoria: '',
-                severita: 'Critica',
-                anno_scoperta: 2024,
-                modello_colpito: '',
-                tecnica: '',
-                mitigazione: '',
-                descrizione: ''
-            }
+            grafici: {}
         }
     },
+    template: `
+        <div class="vista-dashboard">
+            <div class="hero-section">
+                <span class="badge-categoria">OWASP LLM Top 10 2025</span>
+                <h1>Dashboard Vulnerabilità AI</h1>
+                <p class="hero-subtitle">
+                    Visualizzazione interattiva delle vulnerabilità OWASP LLM Top 10 2025.
+                    I dati sono caricati dal file JSON e sincronizzati con le operazioni CRUD tramite localStorage.
+                </p>
+            </div>
 
-    watch: {
-        vistaAttiva(nuovaVista) {
-            if (nuovaVista === 'dashboard') {
-                this.$nextTick(() => {
-                    this.creaGrafici()
-                })
-            }
-            if (nuovaVista === 'crud') {
-                this.mostraForm = false
-            }
-        },
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-md-4">
+                    <div class="content-card h-100">
+                        <h2>Severità</h2>
+                        <p>Distribuzione per livello di severità.</p>
+                        <canvas id="chartSeverita" 
+                                aria-label="Grafico a barre della distribuzione per severità" 
+                                role="img">
+                        </canvas>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="content-card h-100">
+                        <h2>Categorie</h2>
+                        <p>Distribuzione per tipo di attacco.</p>
+                        <canvas id="chartCategorie"
+                                aria-label="Grafico a ciambella della distribuzione per categoria"
+                                role="img">
+                        </canvas>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="content-card h-100">
+                        <h2>Trend temporale</h2>
+                        <p>Vulnerabilità scoperte per anno.</p>
+                        <canvas id="chartAnni"
+                                aria-label="Grafico a linee del trend di scoperta per anno"
+                                role="img">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
 
-        vulnerabilita: {
-            deep: true,
-            handler(nuoviDati) {
-                localStorage.setItem('vulnerabilita', JSON.stringify(nuoviDati))
-            }
+            <div class="content-card">
+                <h2>Tutte le vulnerabilità</h2>
+                <div class="table-responsive mt-3">
+                    <table class="table-confronto">
+                        <caption class="visually-hidden">Elenco vulnerabilità OWASP LLM Top 10 2025</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Codice OWASP</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Severità</th>
+                                <th scope="col">Anno</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="v in vulnerabilita" :key="v.id">
+                                <td><span class="llm-code">{{ v.codice_owasp }}</span></td>
+                                <td>{{ v.nome }}</td>
+                                <td>{{ v.categoria }}</td>
+                                <td>
+                                    <span class="badge-severita" 
+                                          :class="'badge-' + v.severita.toLowerCase()">
+                                        {{ v.severita }}
+                                    </span>
+                                </td>
+                                <td>{{ v.anno_scoperta }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    `,
+    async mounted() {
+        const saved = localStorage.getItem('vulnerabilita')
+        if (saved) {
+            this.vulnerabilita = JSON.parse(saved)
+        } else {
+            const response = await fetch('data/vulnerabilities.json')
+            this.vulnerabilita = await response.json()
         }
+        this.$nextTick(() => {
+            this.creaGrafici()
+        })
     },
-
-    mounted() {
-        this.caricaDati()
-    },
-
     methods: {
-
-        // caricamento dati
-        async caricaDati() {
-            const saved = localStorage.getItem('vulnerabilita')
-            if (saved) {
-                this.vulnerabilita = JSON.parse(saved)
-            } else {
-                const response = await fetch('data/vulnerabilities.json')
-                this.vulnerabilita = await response.json()
-            }
-        },
-
-        // creaz CRUD
-        apriFormNuovo() {
-            this.formModifica = false
-            this.form = {
-                id: Date.now(),
-                nome: '',
-                codice_owasp: '',
-                categoria: '',
-                severita: 'Critica',
-                anno_scoperta: 2024,
-                modello_colpito: '',
-                tecnica: '',
-                mitigazione: '',
-                descrizione: ''
-            }
-            this.mostraForm = true
-        },
-
-        salva() {
-            if (!this.form.nome.trim() || !this.form.codice_owasp.trim()) {
-                alert('Inserisci almeno il Nome e il Codice OWASP.')
-                return
-            }
-            if (this.formModifica) {
-                // update
-                const index = this.vulnerabilita.findIndex(v => v.id === this.form.id)
-                if (index !== -1) {
-                    this.vulnerabilita[index] = { ...this.form }
-                }
-            } else {
-                // crea
-                this.vulnerabilita.push({ ...this.form })
-            }
-            this.mostraForm = false
-        },
-
-        // update CRUD
-        modifica(vuln) {
-            this.form = { ...vuln }
-            this.formModifica = true
-            this.mostraForm = true
-        },
-
-        // CRUD delete
-        elimina(id) {
-            if (confirm('Sei sicura di voler eliminare questa vulnerabilità?')) {
-                this.vulnerabilita = this.vulnerabilita.filter(v => v.id !== id)
-            }
-        },
-
-        // ripristino dati
-        async resetDati() {
-            if (confirm('Ripristinare i dati originali? Tutte le modifiche andranno perse.')) {
-                localStorage.removeItem('vulnerabilita')
-                await this.caricaDati()
-            }
-        },
-
-        annulla() {
-            this.mostraForm = false
-        },
-
-        // grafici
         creaGrafici() {
             this.creaGraficoSeverita()
             this.creaGraficoCategorie()
             this.creaGraficoAnni()
         },
-
         creaGraficoSeverita() {
             const canvas = document.getElementById('chartSeverita')
             if (!canvas) return
@@ -177,7 +515,6 @@ createApp({
                 }
             })
         },
-
         creaGraficoCategorie() {
             const canvas = document.getElementById('chartCategorie')
             if (!canvas) return
@@ -225,7 +562,6 @@ createApp({
                 }
             })
         },
-
         creaGraficoAnni() {
             const canvas = document.getElementById('chartAnni')
             if (!canvas) return
@@ -274,5 +610,239 @@ createApp({
             })
         }
     }
+}
 
-}).mount('#app')
+// CRUD
+const Crud = {
+    data() {
+        return {
+            vulnerabilita: [],
+            mostraForm: false,
+            formModifica: false,
+            form: {
+                id: null,
+                nome: '',
+                codice_owasp: '',
+                categoria: '',
+                severita: 'Critica',
+                anno_scoperta: 2024,
+                modello_colpito: '',
+                tecnica: '',
+                mitigazione: '',
+                descrizione: ''
+            }
+        }
+    },
+    template: `
+        <div class="vista-crud">
+            <div class="hero-section">
+                <span class="badge-categoria">Gestione dati</span>
+                <h1>Gestione Vulnerabilità</h1>
+                <p class="hero-subtitle">
+                    Aggiungi, modifica o elimina le vulnerabilità del registro. 
+                    I dati vengono salvati automaticamente nel browser tramite localStorage.
+                </p>
+            </div>
+
+            <div class="crud-actions mb-4">
+                <button class="btn-primary" @click="apriFormNuovo" aria-label="Aggiungi nuova vulnerabilità">
+                    + Aggiungi vulnerabilità
+                </button>
+                <button class="btn-secondary" @click="resetDati" aria-label="Ripristina dati originali">
+                    Ripristina dati originali
+                </button>
+            </div>
+
+            <div v-if="mostraForm" class="content-card mb-4">
+                <h2>{{ formModifica ? 'Modifica vulnerabilità' : 'Nuova vulnerabilità' }}</h2>
+                <div class="row g-3 mt-2">
+                    <div class="col-12 col-md-6">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" id="nome" v-model="form.nome" 
+                               class="form-input" placeholder="es. Prompt Injection">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="codice_owasp" class="form-label">Codice OWASP</label>
+                        <input type="text" id="codice_owasp" v-model="form.codice_owasp"
+                               class="form-input" placeholder="es. LLM01:2025">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <input type="text" id="categoria" v-model="form.categoria"
+                               class="form-input" placeholder="es. Input Manipulation">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="severita" class="form-label">Severità</label>
+                        <select id="severita" v-model="form.severita" class="form-input">
+                            <option>Critica</option>
+                            <option>Alta</option>
+                            <option>Media</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="anno_scoperta" class="form-label">Anno scoperta</label>
+                        <input type="number" id="anno_scoperta" v-model.number="form.anno_scoperta"
+                               class="form-input" min="2000" max="2030">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="modello_colpito" class="form-label">Modello colpito</label>
+                        <input type="text" id="modello_colpito" v-model="form.modello_colpito"
+                               class="form-input" placeholder="es. GPT-4">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="tecnica" class="form-label">Tecnica</label>
+                        <input type="text" id="tecnica" v-model="form.tecnica"
+                               class="form-input" placeholder="es. Direct Injection">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="mitigazione" class="form-label">Mitigazione</label>
+                        <input type="text" id="mitigazione" v-model="form.mitigazione"
+                               class="form-input" placeholder="es. Input sanitization">
+                    </div>
+                    <div class="col-12">
+                        <label for="descrizione" class="form-label">Descrizione</label>
+                        <textarea id="descrizione" v-model="form.descrizione"
+                                  class="form-input" rows="3"
+                                  placeholder="Descrizione della vulnerabilità..."></textarea>
+                    </div>
+                </div>
+                <div class="form-actions mt-3">
+                    <button class="btn-primary" @click="salva" aria-label="Salva vulnerabilità">Salva</button>
+                    <button class="btn-secondary" @click="annulla" aria-label="Annulla operazione">Annulla</button>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>Registro vulnerabilità <span class="count-badge">{{ vulnerabilita.length }}</span></h2>
+                <div class="table-responsive mt-3">
+                    <table class="table-confronto">
+                        <caption class="visually-hidden">Registro vulnerabilità gestite</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Codice</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Severità</th>
+                                <th scope="col">Anno</th>
+                                <th scope="col">Azioni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="v in vulnerabilita" :key="v.id">
+                                <td><span class="llm-code">{{ v.codice_owasp }}</span></td>
+                                <td>{{ v.nome }}</td>
+                                <td>
+                                    <span class="badge-severita"
+                                          :class="'badge-' + v.severita.toLowerCase()">
+                                        {{ v.severita }}
+                                    </span>
+                                </td>
+                                <td>{{ v.anno_scoperta }}</td>
+                                <td>
+                                    <div class="azioni">
+                                        <button class="btn-modifica" 
+                                                @click="modifica(v)"
+                                                :aria-label="'Modifica ' + v.nome">
+                                            Modifica
+                                        </button>
+                                        <button class="btn-elimina"
+                                                @click="elimina(v.id)"
+                                                :aria-label="'Elimina ' + v.nome">
+                                            Elimina
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    `,
+    watch: {
+        vulnerabilita: {
+            deep: true,
+            handler(nuoviDati) {
+                localStorage.setItem('vulnerabilita', JSON.stringify(nuoviDati))
+            }
+        }
+    },
+    async mounted() {
+        const saved = localStorage.getItem('vulnerabilita')
+        if (saved) {
+            this.vulnerabilita = JSON.parse(saved)
+        } else {
+            const response = await fetch('data/vulnerabilities.json')
+            this.vulnerabilita = await response.json()
+        }
+    },
+    methods: {
+        apriFormNuovo() {
+            this.formModifica = false
+            this.form = {
+                id: Date.now(),
+                nome: '',
+                codice_owasp: '',
+                categoria: '',
+                severita: 'Critica',
+                anno_scoperta: 2024,
+                modello_colpito: '',
+                tecnica: '',
+                mitigazione: '',
+                descrizione: ''
+            }
+            this.mostraForm = true
+        },
+        salva() {
+            if (!this.form.nome.trim() || !this.form.codice_owasp.trim()) {
+                alert('Inserisci almeno il Nome e il Codice OWASP.')
+                return
+            }
+            if (this.formModifica) {
+                const index = this.vulnerabilita.findIndex(v => v.id === this.form.id)
+                if (index !== -1) {
+                    this.vulnerabilita[index] = { ...this.form }
+                }
+            } else {
+                this.vulnerabilita.push({ ...this.form })
+            }
+            this.mostraForm = false
+        },
+        modifica(vuln) {
+            this.form = { ...vuln }
+            this.formModifica = true
+            this.mostraForm = true
+        },
+        elimina(id) {
+            if (confirm('Sei sicura di voler eliminare questa vulnerabilità?')) {
+                this.vulnerabilita = this.vulnerabilita.filter(v => v.id !== id)
+            }
+        },
+        async resetDati() {
+            if (confirm('Ripristinare i dati originali? Tutte le modifiche andranno perse.')) {
+                localStorage.removeItem('vulnerabilita')
+                const response = await fetch('data/vulnerabilities.json')
+                this.vulnerabilita = await response.json()
+            }
+        },
+        annulla() {
+            this.mostraForm = false
+        }
+    }
+}
+
+// rt e router vue
+const routes = [
+    { path: '/',                component: Intro },
+    { path: '/approfondimento', component: Approfondimento },
+    { path: '/dashboard',       component: Dashboard },
+    { path: '/crud',            component: Crud }
+]
+
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes
+})
+
+const app = createApp({})
+app.use(router)
+app.mount('#app')
