@@ -89,12 +89,12 @@ a:hover { text-decoration: underline; }
     filter: invert(1);
 }
 
-/* Menu mobile aperto */
+/* menu mobile aperto */
 .navbar-collapse {
     background-color: var(--bg-secondary);
 }
 
-/* Layout */
+/* layout */
 .vista-intro,
 .vista-approfondimento,
 .vista-dashboard,
