@@ -51,7 +51,7 @@
     "categoria": "Agentic Attack",
     "severita": "Critica",
     "anno_scoperta": 2024,
-    "descrizione": "Un agente LLM con troppi permessi esegue azioni non autorizzate senza supervisione umana."
+    "descrizione": "Un agente AI con troppi permessi esegue azioni non autorizzate."
   },
   {
     "id": 7,
