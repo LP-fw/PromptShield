@@ -6,7 +6,7 @@
     "categoria": "Input Manipulation",
     "severita": "Critica",
     "anno_scoperta": 2023,
-    "descrizione": "L'attaccante manipola il prompt per far eseguire al modello istruzioni non autorizzate, aggirando le linee guida di sicurezza."
+    "descrizione": "L'attaccante manipola il prompt per far eseguire al modello istruzioni non autorizzate."
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "categoria": "Privacy Attack",
     "severita": "Alta",
     "anno_scoperta": 2023,
-    "descrizione": "Il modello rivela involontariamente dati sensibili presenti nel training set o nel contesto della conversazione."
+    "descrizione": "Il modello rivela involontariamente dati sensibili."
   },
   {
     "id": 3,
@@ -42,7 +42,7 @@
     "categoria": "Output Exploitation",
     "severita": "Alta",
     "anno_scoperta": 2023,
-    "descrizione": "L'output del modello viene usato senza validazione causando vulnerabilità XSS, SQL injection o esecuzione di codice arbitrario."
+    "descrizione": "L'output del modello viene usato senza validazione causando vulnerabilità."
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "categoria": "Agentic Attack",
     "severita": "Critica",
     "anno_scoperta": 2024,
-    "descrizione": "Un agente LLM con troppi permessi esegue azioni non autorizzate su sistemi esterni senza supervisione umana."
+    "descrizione": "Un agente LLM con troppi permessi esegue azioni non autorizzate senza supervisione umana."
   },
   {
     "id": 7,
@@ -78,7 +78,7 @@
     "categoria": "Human Factor",
     "severita": "Media",
     "anno_scoperta": 2023,
-    "descrizione": "Il modello genera informazioni false o fuorvianti presentate con sicurezza, portando a decisioni errate o danni reputazionali."
+    "descrizione": "Il modello genera informazioni false o fuorvianti presentate con sicurezza."
   },
   {
     "id": 10,
@@ -87,6 +87,6 @@
     "categoria": "Availability Attack",
     "severita": "Media",
     "anno_scoperta": 2023,
-    "descrizione": "Query complesse o ripetute saturano le risorse computazionali causando denial of service o costi operativi eccessivi."
+    "descrizione": "Query complesse o ripetute saturano le risorse computazionali causando blocchi o costi operativi eccessivi."
   }
 ]
