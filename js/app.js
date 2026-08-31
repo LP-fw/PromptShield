@@ -727,12 +727,7 @@ const Crud = {
                                     </span>
                                 </td>
                                 <td>{{ v.anno_scoperta }}</td>
-                                <td>
-                                    <details>
-                                        <summary>Descrizione</summary>
-                                        {{ v.descrizione || 'Nessuna descrizione.' }}
-                                    </details>
-                                </td>
+                                <td>{{ v.descrizione || 'Nessuna descrizione.' }}</td>
                                 <td>
                                     <div class="azioni">
                                         <button class="btn-modifica" 
