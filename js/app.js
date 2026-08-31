@@ -159,7 +159,7 @@ new Chart(canvas, {
     `
 }
 
-// approfndimento
+// appofondimento
 const Approfondimento = {
     template: `
         <div class="vista-approfondimento">
@@ -439,7 +439,7 @@ const Dashboard = {
                                 <td>{{ v.categoria }}</td>
                                 <td>
                                     <span class="badge-severita" 
-                                          :class="'badge-' + v.severita.toLowerCase()">
+                                          :class="'badge-' + (v.severita ? v.severita.toLowerCase() : 'media')">
                                         {{ v.severita }}
                                     </span>
                                 </td>
@@ -457,7 +457,11 @@ const Dashboard = {
             this.vulnerabilita = JSON.parse(saved)
         } else {
             const response = await fetch('data/vulnerabilities.json')
-            this.vulnerabilita = await response.json()
+            const data = await response.json()
+            this.vulnerabilita = data.map((v, i) => ({
+                ...v,
+                id: v.id || 'native-' + i
+            }))
         }
         this.$nextTick(() => {
             this.creaGrafici()
@@ -522,7 +526,9 @@ const Dashboard = {
 
             const conteggio = {}
             this.vulnerabilita.forEach(v => {
-                conteggio[v.categoria] = (conteggio[v.categoria] || 0) + 1
+                if (v.categoria) {
+                    conteggio[v.categoria] = (conteggio[v.categoria] || 0) + 1
+                }
             })
 
             this.grafici.categorie = new Chart(canvas, {
@@ -569,11 +575,12 @@ const Dashboard = {
 
             const conteggio = {}
             this.vulnerabilita.forEach(v => {
-                conteggio[v.anno_scoperta] = (conteggio[v.anno_scoperta] || 0) + 1
+                if (v.anno_scoperta) {
+                    conteggio[v.anno_scoperta] = (conteggio[v.anno_scoperta] || 0) + 1
+                }
             })
 
             const anniOrdinati = Object.keys(conteggio).sort()
-
             this.grafici.anni = new Chart(canvas, {
                 type: 'line',
                 data: {
@@ -732,7 +739,7 @@ const Crud = {
                                 <td>{{ v.nome }}</td>
                                 <td>
                                     <span class="badge-severita"
-                                          :class="'badge-' + v.severita.toLowerCase()">
+                                          :class="'badge-' + (v.severita ? v.severita.toLowerCase() : 'media')">
                                         {{ v.severita }}
                                     </span>
                                 </td>
@@ -772,7 +779,11 @@ const Crud = {
             this.vulnerabilita = JSON.parse(saved)
         } else {
             const response = await fetch('data/vulnerabilities.json')
-            this.vulnerabilita = await response.json()
+            const data = await response.json()
+            this.vulnerabilita = data.map((v, i) => ({
+                ...v,
+                id: v.id || 'native-' + i
+            }))
         }
     },
     methods: {
@@ -798,7 +809,7 @@ const Crud = {
                 return
             }
             if (this.formModifica) {
-                const index = this.vulnerabilita.findIndex(v => v.id === this.form.id)
+                const index = this.vulnerabilita.findIndex(v => String(v.id) === String(this.form.id))
                 if (index !== -1) {
                     this.vulnerabilita[index] = { ...this.form }
                 }
@@ -814,14 +825,21 @@ const Crud = {
         },
         elimina(id) {
             if (confirm('Sei sicura di voler eliminare questa vulnerabilità?')) {
-                this.vulnerabilita = this.vulnerabilita.filter(v => v.id !== id)
+                const index = this.vulnerabilita.findIndex(v => String(v.id) === String(id))
+                if (index !== -1) {
+                    this.vulnerabilita.splice(index, 1)
+                }
             }
         },
         async resetDati() {
             if (confirm('Ripristinare i dati originali? Tutte le modifiche andranno perse.')) {
                 localStorage.removeItem('vulnerabilita')
                 const response = await fetch('data/vulnerabilities.json')
-                this.vulnerabilita = await response.json()
+                const data = await response.json()
+                this.vulnerabilita = data.map((v, i) => ({
+                    ...v,
+                    id: v.id || 'native-' + i
+                }))
             }
         },
         annulla() {
@@ -830,7 +848,7 @@ const Crud = {
     }
 }
 
-// rt e router vue
+// vuerouter
 const routes = [
     { path: '/',                component: Intro },
     { path: '/approfondimento', component: Approfondimento },
