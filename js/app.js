@@ -712,6 +712,7 @@ const Crud = {
                                 <th scope="col">Nome</th>
                                 <th scope="col">Severità</th>
                                 <th scope="col">Anno</th>
+                                <th scope="col">Descrizione</th>
                                 <th scope="col">Azioni</th>
                             </tr>
                         </thead>
@@ -726,6 +727,12 @@ const Crud = {
                                     </span>
                                 </td>
                                 <td>{{ v.anno_scoperta }}</td>
+                                <td>
+                                    <details>
+                                        <summary>Descrizione</summary>
+                                        {{ v.descrizione || 'Nessuna descrizione.' }}
+                                    </details>
+                                </td>
                                 <td>
                                     <div class="azioni">
                                         <button class="btn-modifica" 
