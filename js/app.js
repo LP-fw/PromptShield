@@ -633,9 +633,6 @@ const Crud = {
                 categoria: '',
                 severita: 'Critica',
                 anno_scoperta: 2024,
-                modello_colpito: '',
-                tecnica: '',
-                mitigazione: '',
                 descrizione: ''
             }
         }
@@ -690,21 +687,6 @@ const Crud = {
                         <label for="anno_scoperta" class="form-label">Anno scoperta</label>
                         <input type="number" id="anno_scoperta" v-model.number="form.anno_scoperta"
                                class="form-input" min="2000" max="2030">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="modello_colpito" class="form-label">Modello colpito</label>
-                        <input type="text" id="modello_colpito" v-model="form.modello_colpito"
-                               class="form-input" placeholder="es. GPT-4">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="tecnica" class="form-label">Tecnica</label>
-                        <input type="text" id="tecnica" v-model="form.tecnica"
-                               class="form-input" placeholder="es. Direct Injection">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="mitigazione" class="form-label">Mitigazione</label>
-                        <input type="text" id="mitigazione" v-model="form.mitigazione"
-                               class="form-input" placeholder="es. Input sanitization">
                     </div>
                     <div class="col-12">
                         <label for="descrizione" class="form-label">Descrizione</label>
@@ -796,9 +778,6 @@ const Crud = {
                 categoria: '',
                 severita: 'Critica',
                 anno_scoperta: 2024,
-                modello_colpito: '',
-                tecnica: '',
-                mitigazione: '',
                 descrizione: ''
             }
             this.mostraForm = true
