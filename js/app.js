@@ -318,7 +318,7 @@ const Approfondimento = {
                 </div>
             </div>
             <div class="content-card">
-                <h2>Casi d'uso reali</h2>
+                <h2>Casi d'uso</h2>
                 <div class="row g-3 mt-1">
                     <div class="col-12 col-md-6">
                         <div class="news-item">
