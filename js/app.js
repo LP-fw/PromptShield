@@ -159,7 +159,7 @@ new Chart(canvas, {
     `
 }
 
-// approfndimento
+// appofondimento
 const Approfondimento = {
     template: `
         <div class="vista-approfondimento">
@@ -439,7 +439,7 @@ const Dashboard = {
                                 <td>{{ v.categoria }}</td>
                                 <td>
                                     <span class="badge-severita" 
-                                          :class="'badge-' + v.severita.toLowerCase()">
+                                          :class="'badge-' + (v.severita ? v.severita.toLowerCase() : 'media')">
                                         {{ v.severita }}
                                     </span>
                                 </td>
@@ -457,7 +457,11 @@ const Dashboard = {
             this.vulnerabilita = JSON.parse(saved)
         } else {
             const response = await fetch('data/vulnerabilities.json')
-            this.vulnerabilita = await response.json()
+            const data = await response.json()
+            this.vulnerabilita = data.map((v, i) => ({
+                ...v,
+                id: v.id || 'native-' + i
+            }))
         }
         this.$nextTick(() => {
             this.creaGrafici()
@@ -522,7 +526,9 @@ const Dashboard = {
 
             const conteggio = {}
             this.vulnerabilita.forEach(v => {
-                conteggio[v.categoria] = (conteggio[v.categoria] || 0) + 1
+                if (v.categoria) {
+                    conteggio[v.categoria] = (conteggio[v.categoria] || 0) + 1
+                }
             })
 
             this.grafici.categorie = new Chart(canvas, {
@@ -569,11 +575,12 @@ const Dashboard = {
 
             const conteggio = {}
             this.vulnerabilita.forEach(v => {
-                conteggio[v.anno_scoperta] = (conteggio[v.anno_scoperta] || 0) + 1
+                if (v.anno_scoperta) {
+                    conteggio[v.anno_scoperta] = (conteggio[v.anno_scoperta] || 0) + 1
+                }
             })
 
             const anniOrdinati = Object.keys(conteggio).sort()
-
             this.grafici.anni = new Chart(canvas, {
                 type: 'line',
                 data: {
@@ -626,9 +633,6 @@ const Crud = {
                 categoria: '',
                 severita: 'Critica',
                 anno_scoperta: 2024,
-                modello_colpito: '',
-                tecnica: '',
-                mitigazione: '',
                 descrizione: ''
             }
         }
@@ -684,21 +688,6 @@ const Crud = {
                         <input type="number" id="anno_scoperta" v-model.number="form.anno_scoperta"
                                class="form-input" min="2000" max="2030">
                     </div>
-                    <div class="col-12 col-md-6">
-                        <label for="modello_colpito" class="form-label">Modello colpito</label>
-                        <input type="text" id="modello_colpito" v-model="form.modello_colpito"
-                               class="form-input" placeholder="es. GPT-4">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="tecnica" class="form-label">Tecnica</label>
-                        <input type="text" id="tecnica" v-model="form.tecnica"
-                               class="form-input" placeholder="es. Direct Injection">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="mitigazione" class="form-label">Mitigazione</label>
-                        <input type="text" id="mitigazione" v-model="form.mitigazione"
-                               class="form-input" placeholder="es. Input sanitization">
-                    </div>
                     <div class="col-12">
                         <label for="descrizione" class="form-label">Descrizione</label>
                         <textarea id="descrizione" v-model="form.descrizione"
@@ -723,6 +712,7 @@ const Crud = {
                                 <th scope="col">Nome</th>
                                 <th scope="col">Severità</th>
                                 <th scope="col">Anno</th>
+                                <th scope="col">Descrizione</th>
                                 <th scope="col">Azioni</th>
                             </tr>
                         </thead>
@@ -732,11 +722,12 @@ const Crud = {
                                 <td>{{ v.nome }}</td>
                                 <td>
                                     <span class="badge-severita"
-                                          :class="'badge-' + v.severita.toLowerCase()">
+                                          :class="'badge-' + (v.severita ? v.severita.toLowerCase() : 'media')">
                                         {{ v.severita }}
                                     </span>
                                 </td>
                                 <td>{{ v.anno_scoperta }}</td>
+                                <td>{{ v.descrizione || 'Nessuna descrizione.' }}</td>
                                 <td>
                                     <div class="azioni">
                                         <button class="btn-modifica" 
@@ -772,7 +763,11 @@ const Crud = {
             this.vulnerabilita = JSON.parse(saved)
         } else {
             const response = await fetch('data/vulnerabilities.json')
-            this.vulnerabilita = await response.json()
+            const data = await response.json()
+            this.vulnerabilita = data.map((v, i) => ({
+                ...v,
+                id: v.id || 'native-' + i
+            }))
         }
     },
     methods: {
@@ -785,9 +780,6 @@ const Crud = {
                 categoria: '',
                 severita: 'Critica',
                 anno_scoperta: 2024,
-                modello_colpito: '',
-                tecnica: '',
-                mitigazione: '',
                 descrizione: ''
             }
             this.mostraForm = true
@@ -798,7 +790,7 @@ const Crud = {
                 return
             }
             if (this.formModifica) {
-                const index = this.vulnerabilita.findIndex(v => v.id === this.form.id)
+                const index = this.vulnerabilita.findIndex(v => String(v.id) === String(this.form.id))
                 if (index !== -1) {
                     this.vulnerabilita[index] = { ...this.form }
                 }
@@ -814,7 +806,11 @@ const Crud = {
         },
         elimina(id) {
             if (confirm('Sei sicura di voler eliminare questa vulnerabilità?')) {
+<<<<<<< HEAD
                 const index = this.vulnerabilita.findIndex(v => v.id === id)
+=======
+                const index = this.vulnerabilita.findIndex(v => String(v.id) === String(id))
+>>>>>>> eaac8601fde5f0813cc5bd98eb34ef419fccc13f
                 if (index !== -1) {
                     this.vulnerabilita.splice(index, 1)
                 }
@@ -824,7 +820,11 @@ const Crud = {
             if (confirm('Ripristinare i dati originali? Tutte le modifiche andranno perse.')) {
                 localStorage.removeItem('vulnerabilita')
                 const response = await fetch('data/vulnerabilities.json')
-                this.vulnerabilita = await response.json()
+                const data = await response.json()
+                this.vulnerabilita = data.map((v, i) => ({
+                    ...v,
+                    id: v.id || 'native-' + i
+                }))
             }
         },
         annulla() {
@@ -833,7 +833,7 @@ const Crud = {
     }
 }
 
-// rt e router vue
+// vuerouter
 const routes = [
     { path: '/', component: Intro },
     { path: '/approfondimento', component: Approfondimento },
