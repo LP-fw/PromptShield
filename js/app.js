@@ -54,7 +54,7 @@ const Intro = {
                         </p>
                         <p>
                             Questo approccio garantisce prestazioni elevate anche con dataset 
-                            complessi.
+                            complessi
                         </p>
                     </div>
                 </div>
@@ -167,7 +167,7 @@ const Approfondimento = {
                 <span class="badge-categoria">Approfondimento tecnico</span>
                 <h1>Chart.js in dettaglio</h1>
                 <p class="hero-subtitle">
-                    Dalla configurazione avanzata all'integrazione con Vue.js, con esempi di casi d'uso reali e confronto con le alternative. Tutto quello che serve per usare Chart.js in un progetto reale!
+                    Dalla configurazione avanzata all'integrazione con Vue.js, con esempi di casi d'uso e confronto con le alternative. Tutto quello che serve per usare Chart.js in un progetto reale!
                 </p>
             </div>
 
