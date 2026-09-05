@@ -78,7 +78,7 @@
     "categoria": "Human Factor",
     "severita": "Media",
     "anno_scoperta": 2023,
-    "descrizione": "Il modello genera informazioni false o fuorvianti presentate con sicurezza."
+    "descrizione": "Il modello genera informazioni false e/o fuorvianti presentate con sicurezza."
   },
   {
     "id": 10,
