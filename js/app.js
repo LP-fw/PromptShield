@@ -806,11 +806,7 @@ const Crud = {
         },
         elimina(id) {
             if (confirm('Sei sicura di voler eliminare questa vulnerabilità?')) {
-<<<<<<< HEAD
-                const index = this.vulnerabilita.findIndex(v => v.id === id)
-=======
                 const index = this.vulnerabilita.findIndex(v => String(v.id) === String(id))
->>>>>>> eaac8601fde5f0813cc5bd98eb34ef419fccc13f
                 if (index !== -1) {
                     this.vulnerabilita.splice(index, 1)
                 }
@@ -835,10 +831,10 @@ const Crud = {
 
 // vuerouter
 const routes = [
-    { path: '/', component: Intro },
+    { path: '/',                component: Intro },
     { path: '/approfondimento', component: Approfondimento },
-    { path: '/dashboard', component: Dashboard },
-    { path: '/crud', component: Crud }
+    { path: '/dashboard',       component: Dashboard },
+    { path: '/crud',            component: Crud }
 ]
 
 const router = VueRouter.createRouter({
