@@ -317,7 +317,6 @@ const Approfondimento = {
                     </div>
                 </div>
             </div>
-
             <div class="content-card">
                 <h2>Casi d'uso reali</h2>
                 <div class="row g-3 mt-1">
