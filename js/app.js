@@ -54,7 +54,7 @@ const Intro = {
                         </p>
                         <p>
                             Questo approccio garantisce prestazioni elevate anche con dataset 
-                            complessi, fino a 1 milione di punti con il decimation plugin attivo.
+                            complessi.
                         </p>
                     </div>
                 </div>
